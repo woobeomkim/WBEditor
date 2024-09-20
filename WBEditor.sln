@@ -43,5 +43,6 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		WBWBEngine_Source\WBWBEngine_Source.vcxitems*{b0ebd77b-a94d-4e47-9ea1-92e7a2e40cb9}*SharedItemsImports = 9
 		WBWBEngine_Source\WBWBEngine_Source.vcxitems*{c27e7ea6-d83e-4535-81e5-f270d9e33031}*SharedItemsImports = 4
+		WBWBEngine_Source\WBWBEngine_Source.vcxitems*{d2365a12-1d45-484d-914f-f744261dd700}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
