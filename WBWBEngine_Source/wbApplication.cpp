@@ -1,12 +1,14 @@
 #include "wbApplication.h"
+#include "wbInput.h"
 
 namespace wb
 {
 	Application::Application()
 		: mHwnd(nullptr),
-		mHdc(nullptr),
+		mHdc(nullptr)
 	{
 	}
+
 	Application::~Application()
 	{
 	}
@@ -16,6 +18,8 @@ namespace wb
 		mHdc = GetDC(mHwnd);
 
 		mPlayer.SetPosition(0, 0);
+		
+		Input::Initailize();
 	}
 
 	void Application::Run()
@@ -27,6 +31,7 @@ namespace wb
 
 	void Application::Update()
 	{
+		Input::Update();
 		mPlayer.Update();
 		
 	}
