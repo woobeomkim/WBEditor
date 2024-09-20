@@ -4,6 +4,11 @@
 #include "framework.h"
 #include "WBEditor.h"
 
+#pragma comment(lib,"..\\x64\\Debug\\WBWBEngine")
+#include "..\\WBWBEngine_Source\\\wbApplication.h"
+
+Application app;
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -44,15 +49,35 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
+
+    while (true)
+    {
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+        {
+            if (msg.message == WM_QUIT)
+                break;
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else
+        {
+            // 메세지가 없을 경우 여기서 처리
+            // 게임 로직이 들어가면 된다.
+        }
+    }
+
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    /*while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
-    }
+    }*/
 
     return (int) msg.wParam;
 }
@@ -148,7 +173,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+
+            HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));
+            HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
+
+            Rectangle(hdc, 100, 100, 200, 200);
+            
+            SelectObject(hdc, oldBrush);
+            
+            DeleteObject(brush);
+            
+            HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+            HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
+            Ellipse(hdc, 200, 200, 300, 300);
+            
+            DeleteObject(redPen);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+            HBRUSH grayBrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
+            HBRUSH oldBrsuh = (HBRUSH)SelectObject(hdc, grayBrush);
+            Rectangle(hdc, 400, 400, 500, 500);
+            SelectObject(hdc, oldBrush);
+
             EndPaint(hWnd, &ps);
         }
         break;
