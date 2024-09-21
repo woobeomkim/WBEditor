@@ -3,6 +3,7 @@
 #include "wbTime.h"
 
 wb::GameObject::GameObject()
+	: mX(0),mY(0)
 {
 }
 
@@ -38,7 +39,7 @@ void wb::GameObject::LateUpdate()
 void wb::GameObject::Render(HDC hdc)
 {
 
-	Rectangle(hdc, 100 + mX, 100 + mY, 200 + mX, 200 + mY);
+	Ellipse(hdc,  mX,  mY, 100 + mX, 100 + mY);
 
 	// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
 

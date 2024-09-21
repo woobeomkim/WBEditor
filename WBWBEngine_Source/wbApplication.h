@@ -18,6 +18,12 @@ namespace wb
 		void Render();
 
 	private:
+		void clearRenderTarget();
+		void copyRenderTarget(HDC source, HDC dest);
+		void adjustWindowRect(HWND hwnd, UINT width, UINT height);
+		void createBuffer(UINT width, UINT height);
+		void initializeEtc();
+	private:
 		HWND mHwnd;
 		HDC mHdc;
 
@@ -27,6 +33,10 @@ namespace wb
 		UINT mWidth;
 		UINT mHeight;
 
-		GameObject mPlayer;
+		//GameObject mPlayer;
+		//GameObject* pPlayer;
+	
+		//std::vector<Scene*> mScenes;
+		//std::vector<GameObject*> mGameObjects;
 	};
 }
