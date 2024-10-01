@@ -2,45 +2,50 @@
 #include "wbInput.h"
 #include "wbTime.h"
 
-wb::GameObject::GameObject()
-	: mX(0),mY(0)
+namespace wb
 {
-}
-
-wb::GameObject::~GameObject()
-{
-}
-
-void wb::GameObject::Update()
-{
-	const int speed = 10000.0f;
-	if (Input::GetKey(eKeyCode::A))
+	GameObject::GameObject()
 	{
-		mX -= speed * Time::DeltaTime();
 	}
-	if (Input::GetKey(eKeyCode::D))
+
+	GameObject::~GameObject()
 	{
-		mX += speed * Time::DeltaTime();
+		for (Component* comp : mComponents)
+		{
+			delete comp;
+			comp = nullptr;
+		}
 	}
-	if (Input::GetKey(eKeyCode::W))
+
+	void GameObject::Initialize()
 	{
-		mY -= speed * Time::DeltaTime();
+		for (Component* comp : mComponents)
+		{
+			comp->Initialize();
+		}
 	}
-	if (Input::GetKey(eKeyCode::S))
+
+	void GameObject::Update()
 	{
-		mY += speed * Time::DeltaTime();
+		for (Component* comp : mComponents)
+		{
+			comp->Update();
+		}
 	}
-}
 
-void wb::GameObject::LateUpdate()
-{
-}
+	void GameObject::LateUpdate()
+	{
+		for (Component* comp : mComponents)
+		{
+			comp->LateUpdate();
+		}
+	}
 
-void wb::GameObject::Render(HDC hdc)
-{
-
-	Ellipse(hdc,  mX,  mY, 100 + mX, 100 + mY);
-
-	// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-
+	void GameObject::Render(HDC hdc)
+	{
+		for (Component* comp : mComponents)
+		{
+			comp->Render(hdc);
+		}
+	}
 }

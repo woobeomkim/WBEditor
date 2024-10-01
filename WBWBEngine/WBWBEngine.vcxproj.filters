@@ -12,10 +12,12 @@
     <ClInclude Include="wbPlayScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="wbPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="wbPlayScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="wbPlayer.cpp" />
   </ItemGroup>
 </Project>
