@@ -4,6 +4,9 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{5fbc83ce-d70d-4c13-8fbc-932972691edf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{dc7448e7-48ca-49bb-80d2-b572cc9a40b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="wbLoadScene.h">
@@ -12,12 +15,18 @@
     <ClInclude Include="wbPlayScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="wbPlayer.h" />
+    <ClInclude Include="wbPlayer.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="wbTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="wbPlayScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="wbPlayer.cpp" />
+    <ClCompile Include="wbPlayer.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="wbTitleScene.cpp" />
   </ItemGroup>
 </Project>

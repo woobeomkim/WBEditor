@@ -3,6 +3,9 @@
 #include "wbPlayer.h"
 #include "wbTransform.h"
 #include "wbSpriteRenderer.h"
+#include "wbInput.h"
+#include "wbTitleScene.h"
+#include "wbSceneManager.h"
 
 namespace wb
 {
@@ -22,7 +25,7 @@ namespace wb
 		//}
 	
 		{
-			Player* bg = new Player();
+			bg = new Player();
 			Transform* tr
 				= bg->AddComponent<Transform>();
 			tr->SetPos(Vector2(0, 0));
@@ -34,7 +37,7 @@ namespace wb
 			
 			sr->SetName(L"SR");
 			sr->ImageLoad(L"C:\\Users\\woobu\\source\\repos\\WBEditor\\Resources\\CloudOcean.png");
-			AddGameObject(bg);
+			AddGameObject(bg, eLayerType::BackGround);
 		}
 
 
@@ -46,9 +49,25 @@ namespace wb
 	void PlayScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			SceneManager::LoadScene(L"TitleScene");
+		}
 	}
 	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+		wchar_t str[50] = L"Play Scene";
+		int len = wcslen(str);
+		TextOut(hdc, 0, 0, str, len);
+	}
+	void PlayScene::OnEnter()
+	{
+	}
+	void PlayScene::OnExit()
+	{
+		Transform* tr = bg->GetComponent<Transform>();
+		tr->SetPos(Vector2(0, 0));
 	}
 }

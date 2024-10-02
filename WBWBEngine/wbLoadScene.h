@@ -1,6 +1,7 @@
 #pragma once
 #include "wbSceneManager.h"
 #include "wbPlayScene.h"
+#include "wbTitleScene.h"
 
 //#ifdef _DEBUG
 //#pragma comment(lib,"..\\x64\\Debug\\WBWBEngine_Source")
@@ -12,6 +13,7 @@ namespace wb
 {
 	void LoadScene()
 	{
+		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		//SceneManager::CreateScene<EndScene>(L"EndScene");
 		//SceneManager::CreateScene<TitleScene>(L"TitleScene");
