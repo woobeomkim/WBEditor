@@ -7,6 +7,7 @@
 //#pragma comment(lib,"..\\x64\\Debug\\WBWBEngine.lib")
 #include "..\\WBWBEngine_Source\\\wbApplication.h"
 #include "..\\WBWBEngine\\wbLoadScene.h"
+#include "..\\WBWBEngine\\wbLoadResources.h"
 
 
 wb::Application application;
@@ -54,7 +55,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-
     while (true)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -70,7 +70,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         else
         {
             application.Run();
-
         }
     }
 
@@ -149,6 +148,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, nullptr);
    // load Scene
+   wb::LoadResources();
    wb::LoadScene();
 
    return TRUE;

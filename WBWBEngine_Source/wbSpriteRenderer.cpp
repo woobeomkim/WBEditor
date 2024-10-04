@@ -1,10 +1,14 @@
 #include "wbSpriteRenderer.h"
 #include "wbGameObject.h"
 #include "wbTransform.h"
+#include "wbTexture.h"
 
 namespace wb
 {
-	SpriteRenderer::SpriteRenderer() : mImage(nullptr),mWidth(0),mHeight(0)
+	SpriteRenderer::SpriteRenderer()
+		: Component(),
+		mTexture(nullptr),
+		mSize(Vector2::One)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -21,17 +25,25 @@ namespace wb
 	}
 	void SpriteRenderer::Render(HDC hdc)
 	{
+		if (mTexture == nullptr) // 텍스쳐 세팅 해주세요!
+			assert(false);
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-
 		Vector2 pos = tr->GetPosition();
 
-		Gdiplus::Graphics graphcis(hdc);
-		graphcis.DrawImage(mImage, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
+		if (mTexture->GetTetureType() == graphics::Texture::eTextureType::Bmp)
+		{
+			TransparentBlt(hdc, pos.x, pos.y
+				, mTexture->GetWidth(), mTexture->GetHeight()
+				, mTexture->GetHdc(), 0, 0, mTexture->GetWidth(), mTexture->GetHeight()
+				, RGB(255, 0, 255));
+		}
+		else if (mTexture->GetTetureType() == graphics::Texture::eTextureType::Png)
+		{
+			Gdiplus::Graphics graphics(hdc);
+			graphics.DrawImage(mTexture->GetImage(),
+				Gdiplus::Rect(pos.x, pos.y
+					, mTexture->GetWidth() * mSize.x , mTexture->GetHeight() * mSize.y));
+		}
 	}
-	void SpriteRenderer::ImageLoad(const std::wstring& path)
-	{
-		mImage = Gdiplus::Image::FromFile(path.c_str());
-		mWidth = mImage->GetWidth();
-		mHeight = mImage->GetHeight();
-	}
+
 }

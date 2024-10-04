@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="wbLoadResources.h" />
     <ClInclude Include="wbLoadScene.h" />
     <ClInclude Include="wbPlayer.h" />
     <ClInclude Include="wbPlayScene.h" />

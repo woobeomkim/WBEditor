@@ -6,6 +6,9 @@
 #include "wbInput.h"
 #include "wbTitleScene.h"
 #include "wbSceneManager.h"
+#include "wbObject.h"
+#include "wbTexture.h"
+#include "wbResources.h"
 
 namespace wb
 {
@@ -17,30 +20,14 @@ namespace wb
 	}
 	void PlayScene::Initialize()
 	{
-		//for (size_t i = 0; i < 100; i++)
-		//{
-		//	GameObject* obj = new GameObject();
-		//	obj->SetPosition(rand() % 1600, rand() % 900);
-		//	AddGameObject(obj);
-		//}
-	
-		{
-			bg = new Player();
-			Transform* tr
-				= bg->AddComponent<Transform>();
-			tr->SetPos(Vector2(0, 0));
-
-			tr->SetName(L"TR");
-
+		// 게임오브젝트 만들기전 리소스들 전부 Load해두면 좋다.
+			bg = object::Instantiate<Player>(enums::eLayerType::BackGround, Vector2(0, 0));
 			SpriteRenderer* sr
 				= bg->AddComponent<SpriteRenderer>();
 			
-			sr->SetName(L"SR");
-			sr->ImageLoad(L"C:\\Users\\woobu\\source\\repos\\WBEditor\\Resources\\CloudOcean.png");
-			AddGameObject(bg, eLayerType::BackGround);
-		}
-
-
+			graphics::Texture* bg = Resources::Find<graphics::Texture>(L"BG");
+			sr->SetTexture(bg);
+			
 	}
 	void PlayScene::Update()
 	{
@@ -67,7 +54,7 @@ namespace wb
 	}
 	void PlayScene::OnExit()
 	{
-		Transform* tr = bg->GetComponent<Transform>();
-		tr->SetPos(Vector2(0, 0));
+		//Transform* tr = bg->GetComponent<Transform>();
+		//tr->SetPos(Vector2(0, 0));
 	}
 }

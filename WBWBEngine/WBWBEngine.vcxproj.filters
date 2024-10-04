@@ -19,6 +19,7 @@
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="wbTitleScene.h" />
+    <ClInclude Include="wbLoadResources.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="wbPlayScene.cpp">

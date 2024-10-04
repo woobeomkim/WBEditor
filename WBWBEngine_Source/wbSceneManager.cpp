@@ -8,6 +8,10 @@ namespace wb
 	SceneManager::SceneManager() 
 	{
 	}
+	SceneManager::~SceneManager()
+	{
+	}
+
 	void SceneManager::Initialize()
 	{
 	}

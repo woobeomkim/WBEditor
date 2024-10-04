@@ -1,6 +1,6 @@
 #pragma once
 
-namespace wb
+namespace wb::enums
 {
 	enum class eLayerType
 	{
@@ -10,5 +10,14 @@ namespace wb
 		// character
 		Player,
 		Max = 16,
+	};
+
+	enum class eResourceType
+	{
+		Texture,
+		AudioClip,
+		Prefab,
+
+		End,
 	};
 }

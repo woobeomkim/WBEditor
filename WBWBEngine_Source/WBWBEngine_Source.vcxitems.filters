@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -36,10 +34,20 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbLayer.cpp">
       <Filter>Layer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbResource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbResources.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTexture.cpp">
+      <Filter>Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp">
+      <Filter>High Level Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -79,17 +87,23 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbEnums.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbObject.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbResources.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTexture.h">
+      <Filter>Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h">
+      <Filter>High Level Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Scene">
-      <UniqueIdentifier>{88878449-2840-4328-be7e-ee86f4caeaa5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="High Level Interface">
-      <UniqueIdentifier>{0548d59c-2e90-4bad-971e-ac65c1a33f5c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Helpers">
-      <UniqueIdentifier>{abbddae7-2fa9-4a76-8717-c4df13da7a7b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject">
       <UniqueIdentifier>{b38964d5-2e3e-4afd-8faa-8b6c0d7dd69b}</UniqueIdentifier>
     </Filter>
@@ -99,8 +113,23 @@
     <Filter Include="Component">
       <UniqueIdentifier>{e8d81485-a40c-4cab-8bac-e8cbb42c7d9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="High Level Interface">
+      <UniqueIdentifier>{0548d59c-2e90-4bad-971e-ac65c1a33f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{abbddae7-2fa9-4a76-8717-c4df13da7a7b}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Layer">
       <UniqueIdentifier>{b1b88c27-55da-413d-8e1b-6b7a2951f324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{88878449-2840-4328-be7e-ee86f4caeaa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{3110c0c1-3a29-4d07-9207-80091d0f5611}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{0513bd45-f1ac-4db8-a64b-a2724987e584}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
